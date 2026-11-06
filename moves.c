@@ -96,9 +96,15 @@ int isPieceMove(Piece board[8][8], int fromX, int fromY, int toX, int toY)
 
 int isValidMove(Piece board[8][8], int fromX, int fromY, int toX, int toY)
 {
-    // Check if coordinates are within bounds
+    // Check if coordinates are within bounds.
     if (fromX < 0 || fromX > 7 || fromY < 0 || fromY > 7 ||
         toX < 0 || toX > 7 || toY < 0 || toY > 7)
+    {
+        return 0;
+    }
+
+    // A move must change squares; otherwise movePiece would erase the piece.
+    if (fromX == toX && fromY == toY)
     {
         return 0;
     }
